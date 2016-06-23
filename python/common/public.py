@@ -22,3 +22,11 @@ TAB = '\t'
 HOME_PATH = '/home/dongjin.ydj'
 SPARK_MASTER = 'ydj.spark.master'
 SPARK_MASTER_PORT = 9000
+
+def singlemode(cls, *args, **kw):  
+    instances = {}  
+    def _singlemode():  
+        if cls not in instances:  
+            instances[cls] = cls(*args, **kw) 
+        return instances[cls]
+    return _singlemode
